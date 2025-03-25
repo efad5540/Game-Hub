@@ -18,9 +18,6 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://yourgamingwebsite.com">
     
@@ -328,6 +325,7 @@
             padding: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            text-align: center;
         }
         
         #game-frame {
@@ -509,162 +507,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        /* New styles for authentication, ratings, and comments */
-        .auth-section {
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            max-width: 500px;
-            margin: 2rem auto;
-        }
-        
-        .auth-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .auth-toggle button {
-            background: none;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--dark-color);
-            position: relative;
-        }
-        
-        .auth-toggle button.active {
-            color: var(--primary-color);
-        }
-        
-        .auth-toggle button.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .auth-form {
-            display: none;
-        }
-        
-        .auth-form.active {
-            display: block;
-        }
-        
-        /* Rating system */
-        .rating-container {
-            display: flex;
-            align-items: center;
-            margin: 1rem 0;
-        }
-        
-        .rating-stars {
-            display: flex;
-            margin-right: 10px;
-        }
-        
-        .rating-stars .star {
-            color: #ddd;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .rating-stars .star:hover,
-        .rating-stars .star.active {
-            color: var(--warning-color);
-        }
-        
-        .average-rating {
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-        
-        /* Comments section */
-        .comments-section {
-            margin-top: 2rem;
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .comment-form {
-            margin-bottom: 2rem;
-        }
-        
-        .comment-list {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .comment {
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .comment:last-child {
-            border-bottom: none;
-        }
-        
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .comment-user {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .comment-date {
-            color: #999;
-            font-size: 0.8rem;
-        }
-        
-        .comment-content {
-            color: #555;
-        }
-        
-        /* User profile indicator */
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .user-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        /* Game player updates */
-        .game-meta-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        /* Hide auth section by default */
-        #auth {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -672,24 +514,16 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">Game<span>Hub</span></a>
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <div class="user-profile" id="user-profile" style="display: none;">
-                    <div class="user-avatar" id="user-avatar">U</div>
-                    <span id="username-display">User</span>
-                    <button id="logout-btn" style="background: none; border: none; color: white; cursor: pointer;">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
-                <button class="mobile-menu-btn">☰</button>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#games">Games</a></li>
-                        <li><a href="#upload">Upload</a></li>
-                        <li><a href="#auth" id="auth-link">Login</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#upload">Upload</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -702,9 +536,18 @@
             <!-- Top Ad Space -->
             <div class="ad-space">
                 <div class="ad-label">Advertisement</div>
-                <!-- Replace with your AdSense code -->
-
+                <!-- Replace with your AdSense code --> <script type="text/javascript">
+	atOptions = {
+		'key' : '521fc75a78ef01ab6ee4f326f1a282f1',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
 <script type="text/javascript" src="//www.highperformanceformat.com/521fc75a78ef01ab6ee4f326f1a282f1/invoke.js"></script>
+
+<script type="text/javascript" src="//www.highperformanceformat.com/b9edbacccafb923a6954d5c895b0e3f1/invoke.js"></script>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
                      crossorigin="anonymous"></script>
                 <!-- Your Ad Unit -->
@@ -724,46 +567,6 @@
                 <button>Search</button>
             </div>
         </div>
-    </section>
-
-    <!-- Authentication Section -->
-    <section class="auth-section" id="auth">
-        <div class="auth-toggle">
-            <button class="active" id="login-toggle">Login</button>
-            <button id="register-toggle">Register</button>
-        </div>
-        
-        <form class="auth-form active" id="login-form">
-            <div class="form-group">
-                <label for="login-username">Username</label>
-                <input type="text" id="login-username" required>
-            </div>
-            <div class="form-group">
-                <label for="login-password">Password</label>
-                <input type="password" id="login-password" required>
-            </div>
-            <button type="submit" class="upload-btn">Login</button>
-        </form>
-        
-        <form class="auth-form" id="register-form">
-            <div class="form-group">
-                <label for="register-username">Username</label>
-                <input type="text" id="register-username" required>
-            </div>
-            <div class="form-group">
-                <label for="register-email">Email</label>
-                <input type="email" id="register-email" required>
-            </div>
-            <div class="form-group">
-                <label for="register-password">Password</label>
-                <input type="password" id="register-password" required>
-            </div>
-            <div class="form-group">
-                <label for="register-confirm">Confirm Password</label>
-                <input type="password" id="register-confirm" required>
-            </div>
-            <button type="submit" class="upload-btn">Register</button>
-        </form>
     </section>
 
     <!-- Main Content -->
@@ -813,36 +616,7 @@
             
             <!-- Game Player (hidden by default) -->
             <div id="game-player">
-                <div class="game-meta-container">
-                    <h2 id="game-player-title">Game Title</h2>
-                    <div class="rating-container">
-                        <div class="rating-stars" id="rating-stars">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                        <span class="average-rating" id="average-rating">4.2</span>
-                    </div>
-                </div>
-                
                 <iframe id="game-frame" allowfullscreen></iframe>
-                
-                <div class="comments-section">
-                    <h3>Comments</h3>
-                    <form class="comment-form" id="comment-form">
-                        <div class="form-group">
-                            <textarea id="comment-text" placeholder="Add your comment..." required></textarea>
-                        </div>
-                        <button type="submit" class="play-btn">Post Comment</button>
-                    </form>
-                    
-                    <div class="comment-list" id="comment-list">
-                        <!-- Comments will be loaded here -->
-                    </div>
-                </div>
-                
                 <button class="back-btn" id="back-btn">Back to Games</button>
             </div>
         </section>
@@ -999,118 +773,30 @@
                     url: "https://example.com/games/battle-royale"
                 }
             ];
-
-            // Sample user data (in a real app, this would come from a database)
-            const users = [
-                {
-                    id: 1,
-                    username: "testuser",
-                    email: "test@example.com",
-                    password: "password123",
-                    joined: "2023-01-01"
-                }
-            ];
-
-            // Sample ratings data
-            const ratings = [
-                {
-                    id: 1,
-                    userId: 1,
-                    gameId: 1,
-                    value: 4,
-                    date: "2023-01-15"
-                },
-                {
-                    id: 2,
-                    userId: 1,
-                    gameId: 2,
-                    value: 5,
-                    date: "2023-01-20"
-                }
-            ];
-
-            // Sample comments data
-            const comments = [
-                {
-                    id: 1,
-                    userId: 1,
-                    username: "testuser",
-                    gameId: 1,
-                    text: "This game is amazing! I love the space theme.",
-                    date: "2023-01-15"
-                },
-                {
-                    id: 2,
-                    userId: 1,
-                    username: "testuser",
-                    gameId: 2,
-                    text: "Challenging puzzles, but very rewarding when you solve them!",
-                    date: "2023-01-20"
-                }
-            ];
             
             // DOM elements
             const gamesContainer = document.getElementById('games-container');
             const gamePlayer = document.getElementById('game-player');
             const gameFrame = document.getElementById('game-frame');
-            const gamePlayerTitle = document.getElementById('game-player-title');
             const backBtn = document.getElementById('back-btn');
             const loader = document.getElementById('loader');
             const categoryBtns = document.querySelectorAll('.category-btn');
             const uploadForm = document.getElementById('game-upload-form');
-            const searchInput = document.querySelector('.search-bar input');
-            const searchButton = document.querySelector('.search-bar button');
-            const authSection = document.getElementById('auth');
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            const loginToggle = document.getElementById('login-toggle');
-            const registerToggle = document.getElementById('register-toggle');
-            const authLink = document.getElementById('auth-link');
-            const userProfile = document.getElementById('user-profile');
-            const userAvatar = document.getElementById('user-avatar');
-            const usernameDisplay = document.getElementById('username-display');
-            const logoutBtn = document.getElementById('logout-btn');
-            const ratingStars = document.getElementById('rating-stars');
-            const averageRating = document.getElementById('average-rating');
-            const commentForm = document.getElementById('comment-form');
-            const commentList = document.getElementById('comment-list');
-            const commentText = document.getElementById('comment-text');
             
-            // Current user data
-            let currentUser = null;
-            let currentGame = null;
-            let currentUserRating = null;
-
             // Display games
-            function displayGames(filterCategory = 'all', searchTerm = '') {
+            function displayGames(filterCategory = 'all') {
                 gamesContainer.innerHTML = '';
                 
-                let filteredGames = filterCategory === 'all' 
+                const filteredGames = filterCategory === 'all' 
                     ? games 
                     : games.filter(game => game.category === filterCategory);
                 
-                if (searchTerm) {
-                    filteredGames = filteredGames.filter(game => 
-                        game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        game.description.toLowerCase().includes(searchTerm.toLowerCase())
-                    );
-                }
-                
                 if (filteredGames.length === 0) {
-                    gamesContainer.innerHTML = '<p>No games found. Try a different search or category.</p>';
+                    gamesContainer.innerHTML = '<p>No games found in this category.</p>';
                     return;
                 }
                 
                 filteredGames.forEach(game => {
-                    // Calculate average rating for each game
-                    const gameRatings = ratings.filter(r => r.gameId === game.id);
-                    const avgRating = gameRatings.length > 0 
-                        ? (gameRatings.reduce((sum, r) => sum + r.value, 0) / gameRatings.length).toFixed(1)
-                        : 'No ratings';
-                    
-                    // Count comments for each game
-                    const commentCount = comments.filter(c => c.gameId === game.id).length;
-                    
                     const gameCard = document.createElement('div');
                     gameCard.className = 'game-card';
                     gameCard.dataset.category = game.category;
@@ -1119,15 +805,7 @@
                         <div class="game-info">
                             <h3 class="game-title">${game.title}</h3>
                             <p class="game-description">${game.description}</p>
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 0.8rem; color: #666;">
-                                    <i class="fas fa-star" style="color: var(--warning-color);"></i> ${avgRating}
-                                    <span style="margin-left: 10px;">
-                                        <i class="fas fa-comment" style="color: var(--primary-color);"></i> ${commentCount}
-                                    </span>
-                                </span>
-                                <a href="#" class="play-btn" data-game-id="${game.id}">Play Now</a>
-                            </div>
+                            <a href="#" class="play-btn" data-game-id="${game.id}">Play Now</a>
                         </div>
                     `;
                     gamesContainer.appendChild(gameCard);
@@ -1145,86 +823,25 @@
             
             // Play game function
             function playGame(gameId) {
-                currentGame = games.find(g => g.id === gameId);
-                if (!currentGame) return;
-                
-                gamePlayerTitle.textContent = currentGame.title;
+                const game = games.find(g => g.id === gameId);
+                if (!game) return;
                 
                 // Show loader
                 loader.style.display = 'block';
                 gamesContainer.style.display = 'none';
                 
+                // Simulate loading (in a real app, this would be the actual game loading)
                 setTimeout(() => {
                     loader.style.display = 'none';
-                    gameFrame.src = currentGame.url;
+                    gameFrame.src = game.url;
                     gamePlayer.style.display = 'block';
-                    
-                    // Load ratings and comments for this game
-                    updateRatingDisplay();
-                    loadComments();
                     
                     // Scroll to game player
                     gamePlayer.scrollIntoView({ behavior: 'smooth' });
-                }, 500);
-            }
-            
-            // Update rating display
-            function updateRatingDisplay() {
-                if (!currentGame) return;
-                
-                // Get all ratings for current game
-                const gameRatings = ratings.filter(r => r.gameId === currentGame.id);
-                
-                // Calculate average rating
-                const avg = gameRatings.length > 0 
-                    ? (gameRatings.reduce((sum, r) => sum + r.value, 0) / gameRatings.length).toFixed(1)
-                    : 0;
-                
-                averageRating.textContent = avg;
-                
-                // Get current user's rating if logged in
-                currentUserRating = currentUser 
-                    ? ratings.find(r => r.userId === currentUser.id && r.gameId === currentGame.id)
-                    : null;
-                
-                // Update star display
-                const stars = ratingStars.querySelectorAll('.star');
-                stars.forEach(star => {
-                    star.classList.remove('active');
-                    const value = parseInt(star.dataset.value);
-                    if (currentUserRating && value <= currentUserRating.value) {
-                        star.classList.add('active');
-                    }
-                });
-            }
-            
-            // Load comments for current game
-            function loadComments() {
-                if (!currentGame) return;
-                
-                const gameComments = comments
-                    .filter(c => c.gameId === currentGame.id)
-                    .sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                commentList.innerHTML = '';
-                
-                if (gameComments.length === 0) {
-                    commentList.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
-                    return;
-                }
-                
-                gameComments.forEach(comment => {
-                    const commentEl = document.createElement('div');
-                    commentEl.className = 'comment';
-                    commentEl.innerHTML = `
-                        <div class="comment-header">
-                            <span class="comment-user">${comment.username}</span>
-                            <span class="comment-date">${new Date(comment.date).toLocaleDateString()}</span>
-                        </div>
-                        <div class="comment-content">${comment.text}</div>
-                    `;
-                    commentList.appendChild(commentEl);
-                });
+                    
+                    // Track game play for analytics
+                    console.log(`Game played: ${game.title}`);
+                }, 1000);
             }
             
             // Back to games list
@@ -1232,35 +849,26 @@
                 gamePlayer.style.display = 'none';
                 gameFrame.src = '';
                 gamesContainer.style.display = 'grid';
-                currentGame = null;
             });
             
             // Category filter
             categoryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
                     categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
                     this.classList.add('active');
+                    
+                    // Filter games
                     const category = this.dataset.category;
-                    displayGames(category, searchInput.value);
+                    displayGames(category);
                 });
-            });
-            
-            // Search functionality
-            searchButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                const activeCategory = document.querySelector('.category-btn.active');
-                displayGames(activeCategory.dataset.category, searchInput.value);
             });
             
             // Handle game upload
             uploadForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                if (!currentUser) {
-                    alert('Please login to upload games');
-                    authSection.style.display = 'block';
-                    return;
-                }
                 
                 // Get form data
                 const title = document.getElementById('game-title').value;
@@ -1316,180 +924,7 @@
                 nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
             });
             
-            // Authentication functions
-            function loginUser(username, password) {
-                const user = users.find(u => u.username === username && u.password === password);
-                if (user) {
-                    currentUser = user;
-                    updateAuthUI();
-                    authSection.style.display = 'none';
-                    return true;
-                }
-                return false;
-            }
-            
-            function registerUser(username, email, password) {
-                if (users.some(u => u.username === username)) {
-                    alert('Username already exists');
-                    return false;
-                }
-                
-                const newUser = {
-                    id: Date.now(),
-                    username,
-                    email,
-                    password,
-                    joined: new Date().toISOString()
-                };
-                
-                users.push(newUser);
-                currentUser = newUser;
-                updateAuthUI();
-                authSection.style.display = 'none';
-                return true;
-            }
-            
-            function logoutUser() {
-                currentUser = null;
-                updateAuthUI();
-            }
-            
-            function updateAuthUI() {
-                if (currentUser) {
-                    authLink.style.display = 'none';
-                    userProfile.style.display = 'flex';
-                    usernameDisplay.textContent = currentUser.username;
-                    userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
-                } else {
-                    authLink.style.display = 'block';
-                    userProfile.style.display = 'none';
-                }
-            }
-            
-            // Authentication event listeners
-            loginToggle.addEventListener('click', function() {
-                loginToggle.classList.add('active');
-                registerToggle.classList.remove('active');
-                loginForm.classList.add('active');
-                registerForm.classList.remove('active');
-            });
-            
-            registerToggle.addEventListener('click', function() {
-                registerToggle.classList.add('active');
-                loginToggle.classList.remove('active');
-                registerForm.classList.add('active');
-                loginForm.classList.remove('active');
-            });
-            
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('login-username').value;
-                const password = document.getElementById('login-password').value;
-                
-                if (loginUser(username, password)) {
-                    this.reset();
-                } else {
-                    alert('Invalid username or password');
-                }
-            });
-            
-            registerForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('register-username').value;
-                const email = document.getElementById('register-email').value;
-                const password = document.getElementById('register-password').value;
-                const confirm = document.getElementById('register-confirm').value;
-                
-                if (password !== confirm) {
-                    alert('Passwords do not match');
-                    return;
-                }
-                
-                if (registerUser(username, email, password)) {
-                    this.reset();
-                    loginToggle.click();
-                }
-            });
-            
-            logoutBtn.addEventListener('click', logoutUser);
-            
-            // Rating system
-            ratingStars.addEventListener('click', function(e) {
-                if (!currentUser) {
-                    alert('Please login to rate games');
-                    authSection.style.display = 'block';
-                    return;
-                }
-                
-                if (!currentGame) return;
-                
-                const star = e.target.closest('.star');
-                if (!star) return;
-                
-                const value = parseInt(star.dataset.value);
-                
-                // Remove active class from all stars
-                const stars = ratingStars.querySelectorAll('.star');
-                stars.forEach(s => s.classList.remove('active'));
-                
-                // Add active class to clicked star and previous stars
-                for (let i = 0; i < value; i++) {
-                    stars[i].classList.add('active');
-                }
-                
-                // Update or create rating
-                if (currentUserRating) {
-                    currentUserRating.value = value;
-                } else {
-                    const newRating = {
-                        id: Date.now(),
-                        userId: currentUser.id,
-                        gameId: currentGame.id,
-                        value: value,
-                        date: new Date().toISOString()
-                    };
-                    ratings.push(newRating);
-                    currentUserRating = newRating;
-                }
-                
-                updateRatingDisplay();
-            });
-            
-            // Comment system
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (!currentUser) {
-                    alert('Please login to post comments');
-                    authSection.style.display = 'block';
-                    return;
-                }
-                
-                if (!currentGame) return;
-                
-                const text = commentText.value.trim();
-                if (!text) return;
-                
-                // Add new comment
-                const newComment = {
-                    id: Date.now(),
-                    userId: currentUser.id,
-                    username: currentUser.username,
-                    gameId: currentGame.id,
-                    text: text,
-                    date: new Date().toISOString()
-                };
-                
-                comments.push(newComment);
-                commentText.value = '';
-                loadComments();
-                
-                // Update game display to show new comment count
-                displayGames();
-            });
-            
-            // Initialize
-            updateAuthUI();
+            // Initialize by displaying all games
             displayGames();
         });
     </script>

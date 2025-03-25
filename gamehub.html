@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play free online games on our platform. Discover thousands of browser games or upload your own creations.">
+    <meta name="keywords" content="online games, free games, browser games, HTML5 games, upload games">
+    <meta name="author" content="Your Gaming Site">
+    <meta property="og:title" content="GameHub - Play & Share Free Online Games">
+    <meta property="og:description" content="Discover and play thousands of free online games or upload your own creations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourgamingwebsite.com">
+    <meta property="og:image" content="https://yourgamingwebsite.com/images/logo.png">
+    
+    <title>GameHub - Play & Share Free Online Games</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourgamingwebsite.com">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GameHub",
+      "url": "https://yourgamingwebsite.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourgamingwebsite.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #ff6b6b;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .search-bar button:hover {
+            background-color: #ff5252;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 1rem;
+        }
+        
+        .game-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .game-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .play-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .play-btn:hover {
+            background-color: #3a56d4;
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .upload-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .upload-btn:hover {
+            background-color: #218838;
+        }
+        
+        /* Game Player */
+        #game-player {
+            display: none;
+            margin: 2rem 0;
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        
+        #game-frame {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+        
+        .back-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--dark-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            background-color: #0f0f1f;
+        }
+        
+        /* Ad Spaces */
+        .ad-space {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        /* Categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .search-bar input {
+                border-radius: var(--border-radius);
+                margin-bottom: 0.5rem;
+            }
+            
+            .search-bar button {
+                border-radius: var(--border-radius);
+                width: 100%;
+            }
+            
+            #game-frame {
+                height: 300px;
+            }
+        }
+        
+        /* Loading Animation */
+        .loader {
+            display: none;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Game<span>Hub</span></a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#upload">Upload</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Play & Share Awesome Games</h1>
+            <p>Discover thousands of free online games or upload your own creations to share with the world.</p>
+            
+            <!-- Top Ad Space -->
+            <div class="ad-space">
+                <div class="ad-label">Advertisement</div>
+                <!-- Replace with your AdSense code --> 
+
+<script type="text/javascript" src="//www.highperformanceformat.com/b9edbacccafb923a6954d5c895b0e3f1/invoke.js"></script>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search for games...">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+        <!-- Featured Games -->
+        <section id="games">
+            <div class="section-title">
+                <h2>Featured Games</h2>
+            </div>
+            
+            <!-- Middle Ad Space -->
+            <div class="ad-space">
+                <div class="ad-label">Advertisement</div>
+                <!-- Replace with your AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Categories -->
+            <div class="categories" id="categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="action">Action</button>
+                <button class="category-btn" data-category="adventure">Adventure</button>
+                <button class="category-btn" data-category="puzzle">Puzzle</button>
+                <button class="category-btn" data-category="strategy">Strategy</button>
+                <button class="category-btn" data-category="sports">Sports</button>
+                <button class="category-btn" data-category="multiplayer">Multiplayer</button>
+            </div>
+            
+            <!-- Games Grid -->
+            <div class="games-grid" id="games-container">
+                <!-- Games will be loaded here dynamically -->
+            </div>
+            
+            <!-- Loader -->
+            <div class="loader" id="loader"></div>
+            
+            <!-- Game Player (hidden by default) -->
+            <div id="game-player">
+                <iframe id="game-frame" allowfullscreen></iframe>
+                <button class="back-btn" id="back-btn">Back to Games</button>
+            </div>
+        </section>
+        
+        <!-- Upload Section -->
+        <section id="upload">
+            <div class="section-title">
+                <h2>Upload Your Game</h2>
+            </div>
+            
+            <div class="upload-section">
+                <form class="upload-form" id="game-upload-form">
+                    <div class="form-group">
+                        <label for="game-title">Game Title</label>
+                        <input type="text" id="game-title" name="game-title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-description">Description</label>
+                        <textarea id="game-description" name="game-description" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-category">Category</label>
+                        <select id="game-category" name="game-category" required>
+                            <option value="">Select a category</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="puzzle">Puzzle</option>
+                            <option value="strategy">Strategy</option>
+                            <option value="sports">Sports</option>
+                            <option value="multiplayer">Multiplayer</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-thumbnail">Thumbnail Image</label>
+                        <input type="file" id="game-thumbnail" name="game-thumbnail" accept="image/*" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-file">Game File (HTML/JS/ZIP)</label>
+                        <input type="file" id="game-file" name="game-file" accept=".html,.js,.zip" required>
+                    </div>
+                    
+                    <button type="submit" class="upload-btn">Upload Game</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GameHub</h3>
+                    <p>Your premier destination for free online games and game sharing.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#upload">Upload</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> GameHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Sample game data (in a real app, this would come from a database)
+            const games = [
+                {
+                    id: 1,
+                    title: "Space Adventure",
+                    description: "Navigate through space and collect stars while avoiding asteroids.",
+                    category: "action",
+                    thumbnail: "https://via.placeholder.com/300x150?text=Space+Adventure",
+                    url: "https://example.com/games/space-adventure"
+                },
+                {
+                    id: 2,
+                    title: "Puzzle Master",
+                    description: "Solve challenging puzzles to advance through levels.",
+                    category: "puzzle",
+                    thumbnail: "https://via.placeholder.com/300x150?text=Puzzle+Master",
+                    url: "https://example.com/games/puzzle-master"
+                },
+                {
+                    id: 3,
+                    title: "Football Frenzy",
+                    description: "Score goals and win matches in this exciting football game.",
+                    category: "sports",
+                    thumbnail: "https://via.placeholder.com/300x150?text=Football+Frenzy",
+                    url: "https://example.com/games/football-frenzy"
+                },
+                {
+                    id: 4,
+                    title: "Kingdom Defense",
+                    description: "Build towers and defend your kingdom from invading enemies.",
+                    category: "strategy",
+                    thumbnail: "https://via.placeholder.com/300x150?text=Kingdom+Defense",
+                    url: "https://example.com/games/kingdom-defense"
+                },
+                {
+                    id: 5,
+                    title: "Jungle Explorer",
+                    description: "Explore the jungle, find treasures and avoid dangerous animals.",
+                    category: "adventure",
+                    thumbnail: "https://via.placeholder.com/300x150?text=Jungle+Explorer",
+                    url: "https://example.com/games/jungle-explorer"
+                },
+                {
+                    id: 6,
+                    title: "Battle Royale",
+                    description: "Multiplayer battle game where the last player standing wins.",
+                    category: "multiplayer",
+                    thumbnail: "https://via.placeholder.com/300x150?text=Battle+Royale",
+                    url: "https://example.com/games/battle-royale"
+                }
+            ];
+            
+            // DOM elements
+            const gamesContainer = document.getElementById('games-container');
+            const gamePlayer = document.getElementById('game-player');
+            const gameFrame = document.getElementById('game-frame');
+            const backBtn = document.getElementById('back-btn');
+            const loader = document.getElementById('loader');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const uploadForm = document.getElementById('game-upload-form');
+            
+            // Display games
+            function displayGames(filterCategory = 'all') {
+                gamesContainer.innerHTML = '';
+                
+                const filteredGames = filterCategory === 'all' 
+                    ? games 
+                    : games.filter(game => game.category === filterCategory);
+                
+                if (filteredGames.length === 0) {
+                    gamesContainer.innerHTML = '<p>No games found in this category.</p>';
+                    return;
+                }
+                
+                filteredGames.forEach(game => {
+                    const gameCard = document.createElement('div');
+                    gameCard.className = 'game-card';
+                    gameCard.dataset.category = game.category;
+                    gameCard.innerHTML = `
+                        <img src="${game.thumbnail}" alt="${game.title}" class="game-thumbnail">
+                        <div class="game-info">
+                            <h3 class="game-title">${game.title}</h3>
+                            <p class="game-description">${game.description}</p>
+                            <a href="#" class="play-btn" data-game-id="${game.id}">Play Now</a>
+                        </div>
+                    `;
+                    gamesContainer.appendChild(gameCard);
+                });
+                
+                // Add event listeners to play buttons
+                document.querySelectorAll('.play-btn').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const gameId = parseInt(this.dataset.gameId);
+                        playGame(gameId);
+                    });
+                });
+            }
+            
+            // Play game function
+            function playGame(gameId) {
+                const game = games.find(g => g.id === gameId);
+                if (!game) return;
+                
+                // Show loader
+                loader.style.display = 'block';
+                gamesContainer.style.display = 'none';
+                
+                // Simulate loading (in a real app, this would be the actual game loading)
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    gameFrame.src = game.url;
+                    gamePlayer.style.display = 'block';
+                    
+                    // Scroll to game player
+                    gamePlayer.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Track game play for analytics
+                    console.log(`Game played: ${game.title}`);
+                }, 1000);
+            }
+            
+            // Back to games list
+            backBtn.addEventListener('click', function() {
+                gamePlayer.style.display = 'none';
+                gameFrame.src = '';
+                gamesContainer.style.display = 'grid';
+            });
+            
+            // Category filter
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter games
+                    const category = this.dataset.category;
+                    displayGames(category);
+                });
+            });
+            
+            // Handle game upload
+            uploadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const title = document.getElementById('game-title').value;
+                const description = document.getElementById('game-description').value;
+                const category = document.getElementById('game-category').value;
+                const thumbnail = document.getElementById('game-thumbnail').files[0];
+                const gameFile = document.getElementById('game-file').files[0];
+                
+                // In a real app, you would upload this to a server
+                console.log('Game upload attempted:', {
+                    title,
+                    description,
+                    category,
+                    thumbnail,
+                    gameFile
+                });
+                
+                // Simulate upload
+                loader.style.display = 'block';
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    
+                    // Create a new game object (in a real app, this would come from the server)
+                    const newGame = {
+                        id: games.length + 1,
+                        title,
+                        description,
+                        category,
+                        thumbnail: URL.createObjectURL(thumbnail),
+                        url: URL.createObjectURL(gameFile)
+                    };
+                    
+                    // Add to games array
+                    games.push(newGame);
+                    
+                    // Reset form
+                    uploadForm.reset();
+                    
+                    // Show success message
+                    alert('Game uploaded successfully!');
+                    
+                    // Refresh games list
+                    displayGames();
+                }, 2000);
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Initialize by displaying all games
+            displayGames();
+        });
+    </script>
+</body>
+</html>
